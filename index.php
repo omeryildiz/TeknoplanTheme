@@ -89,14 +89,13 @@ get_sidebar( 'mobile' ); ?>
                 </h3>
               </div>      
               <div class="panel-body">
-                <ul class="list-group">
-				<?php
+                <div class="list-group">
+                  <?php
                 foreach ($posts as $value) {
-                    echo '<li><a class="list-group-item" href="'.get_permalink( $value->ID).'">'.$value->post_title.'</a></li>';
+                    echo '<a class="list-group-item" href="'.get_permalink( $value->ID).'">'.$value->post_title.'</a>';
                       }
                 ?>
-
-              </ul>
+                </div>
             </div>
           </div>
           </div>
