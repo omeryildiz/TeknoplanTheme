@@ -15,7 +15,7 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'boilerstrap' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1 class="page-title"><?php printf( __( '%s  için arama sonuçları:', 'boilerstrap' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header>
 
 			<?php boilerstrap_content_nav( 'nav-above' ); ?>
@@ -31,7 +31,7 @@ get_header(); ?>
 
 			<article id="post-0" class="post no-results not-found">
 				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'Nothing Found', 'boilerstrap' ); ?></h1>
+					<h1 class="entry-title"><?php _e( 'Sonuç Bulunamadı', 'boilerstrap' ); ?></h1>
 				</header>
 
 				<div class="entry-content">

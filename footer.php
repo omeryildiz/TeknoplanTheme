@@ -10,19 +10,14 @@
  * @since Boilerstrap 1.0
  */
 ?>
-  	</div><!-- #main .wrapper -->
-  	<footer id="colophon" role="contentinfo">
-
-  		</div><!-- .site-info -->
-  	</footer><!-- #colophon -->
-	<div style="background-color:#1d1c1c">
-
+</div><!-- #main .wrapper -->
+<div style="min-height:20px;">
+</div><!-- #page -->
+<div style="background-color:#1d1c1c">
 <div class="container" style="padding-top:20px;padding-bottom:20px;">
-<p></p>
-    <div class="row">
-          <div id="menu_footer_id">
+<div id="menu_footer_id">
             <?php wp_nav_menu(array('theme_location'=>'primary-menu','menu_class'=>'footer_menu_class','menu_id'=>'menu_footer_id','items_wrap'=>'<ul id="%1$s">%3$s</ul>')); ?>
-          </div>
+      
           </div>
         </div>
            
@@ -67,8 +62,6 @@
 </div>
 
 </div>
-  </div><!-- #page -->
-
   <?php wp_footer(); ?>
 
 </body>

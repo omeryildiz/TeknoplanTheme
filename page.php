@@ -14,14 +14,30 @@
 
 get_header(); ?>
 
-	<div id="primary" class="site-content span8">
-		<div id="content" role="main">
+	<div id="primary"  class="hfeed site container">
 
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', 'page' ); ?>
-				<?php comments_template( '', true ); ?>
-			<?php endwhile; // end of the loop. ?>
+		<div id="content" style="margin-left:0px;" role="main">
+		<?php if(have_posts()) : ?><?php while(have_posts()) : the_post(); ?>
+		
+		<div class="post" style="min-height:20px">
+		<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
+
+			<div class="entry">
+				
+			<?php the_content(); ?>
+
+			</div>
+
+		</div>
+		
+<?php endwhile; ?>
+
+	<div class="navigation">
+		<?php posts_nav_link(); ?>
+	</div>
+
+<?php endif; ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 

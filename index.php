@@ -18,10 +18,10 @@ get_header();
 get_sidebar( 'mobile' ); ?>
 
 
-	<div id="primary" style="margin-left:50px;" class="site-content span6">
-		<div id="content" role="main">
-		<div id="this-carousel-id" class="carousel slide">
-        <div class="carousel-inner">
+	<div id="primary" class="site-content span12">
+		<div id="content" style="margin-top:px;"  role="main">
+		<div id="this-carousel-id" class="carousel slide span8">
+        <div class="carousel-inner"style="size:20px 20px;">
           <?php $posts = (query_posts( 'cat='.get_cat_ID('slider') ));
            //var_dump($posts);
           static $flag_active = 1;
@@ -44,21 +44,19 @@ get_sidebar( 'mobile' ); ?>
             
            }
             ?>
-   
-        </div><!-- .carousel-inner -->
-        <!--  next and previous controls here
-              href values must reference the id for this carousel -->
+        </div>
           <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
           <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
-          </div><!-- .carousel -->
-          </div>
-		  
-          </div><!-- .content -->
-		  <?php 
+        </div><!-- .carousel -->
+		<?php 
               $posts = (query_posts( 'cat='.get_cat_ID('haber') ));
-          ?>     
-            <div class="span4">
-              <div class="row">
+          ?>
+		  
+      		  
+			</div><!-- #content -->
+	<div class="span4 offset1" style="margin-left:10px;">
+	<div class="row" style="margin-left:0px;">
+		  <div style="padding-bottom:10px,padding-top:px">
                 <?php if(get_bloginfo('language') == "en-US"): ?>
 				<div ><img src="http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label_eng.png" usemap="#Map" style="background-image: url('http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png');background-size:90% 90%;" border="0">
                       <map name="Map" id="Map">
@@ -67,17 +65,17 @@ get_sidebar( 'mobile' ); ?>
                       </map>
                       </div>       
                  <?php else: ?>
-                    <div ><img src="http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png" usemap="#Map" style="margin-top:27px;background-image: url('http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png');background-size:90% 90%;" border="0">
+                    <div style="margin-top:-6%"><img src="http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png" usemap="#Map" style="margin-top:27px;background-image: url('http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png');background-size:90% 90%;" border="0">
                       <map name="Map" id="Map">
                         <area shape="rect" coords="140,5,263,88" href="http://automation.teknoplan.com.tr/index.php/urunler/" />
                         <area shape="rect" coords="268,4,430,89" href="http://teknoplan.com.tr/index.php/urunler-otomasyon/" />
                       </map>
-                      </div>                              
-                <?php endif; ?>
-                
-              </div>              
-              <div class="row"style="margin-top:10px;">
-              <div class="panel panel-info">
+					   </div> 
+					     <?php endif; ?>
+           </div> <!--row span4-->                             
+               </div>
+         
+		<div class="panel panel-info">
               <div class="panel-heading">
                 <h3 class="panel-title">
                   <?php
@@ -97,15 +95,11 @@ get_sidebar( 'mobile' ); ?>
                 ?>
                 </div>
             </div>
-          </div>
-          </div>
-        </div>
-            
-          
-        </div>
-		  
-		  	</div><!-- #primary -->
-			 <div class="span4 text-center">
+          </div></div>
+        
+	</div><!-- #primary -->
+			 <div class="row"> 
+		  <div class="span4 text-center">
                     <a href="http://machine.teknoplan.com.tr/">
                     <img class="img-circle" style="width: 140px; height: 140px;" src="http://teknoplan.com.tr/wp-content/uploads/2013/10/makine.jpeg">
                     <h2>Makine</h2>
@@ -125,6 +119,7 @@ get_sidebar( 'mobile' ); ?>
                     <h2>Bilişim</h2>
                     </a>
                   </div>
+          </div>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

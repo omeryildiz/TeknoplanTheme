@@ -75,14 +75,14 @@
 
   <div id="site-navigation" class="navbar navbar-fixed-top" role="navigation">
     <div class="navbar-inner">
-     
+      <div class="container-fluid">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <i class="icon-chevron-down"></i>
         </button>
-        <a style="margin-left:100px" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
         <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'boilerstrap' ); ?>"><?php _e( 'Skip to content', 'boilerstrap' ); ?></a>
         <div class="nav-collapse collapse">
-		<?php 
+  	  	<?php 
   	  	    wp_nav_menu( array(
   	  	        'menu'       => 'top_menu',
   	  	        'depth'      => 3,
@@ -92,7 +92,7 @@
   	  	        'walker' => new twitter_bootstrap_nav_walker())
   	  	    );
   	  	?>
-			 <p style="margin-top:9px;margin-left:20px;margin-right:20px" class="navbar-search pull-right">
+  			<p style="margin-top:9px;margin-left:20px;margin-right:20px" class="navbar-search pull-right">
             <?php // get_sidebar('teknoplan'); 
             ?>
             <?php if(get_bloginfo('language') == "tr-TR"): ?>
@@ -101,24 +101,23 @@
             <a tabindex="-1" href=<?php echo get_site_url() ?> ><img height="22" width="36" src="http://teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/turk.png"></a></li>
             <?php endif; ?>            
           </p>
-<form method="get" id="searchform" class="navbar-search pull-right" action="<?php bloginfo('home'); ?>/">
-  	<form class="form-search">
-  	<input type="text" name="s" id="s" class="search-query" placeholder="Search" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" x-webkit-speech tabindex="1">
-  				</form>
-  			</form>		  
-			
+		<form method="get" id="searchform" class="navbar-search pull-right" action="<?php bloginfo('home'); ?>/">
+		<form class="form-search">
+		<input type="text" name="s" id="s" class="search-query" placeholder="Search" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" x-webkit-speech tabindex="1">
+  		</form>
+  		</form>	
+  
         </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
-  
-  <div id="page" class="hfeed site">
-  	<header id="masthead" class="site-header" role="banner">
-  		<div id = "header-image" class="col-lg-12 visible-lg">
-            <?php 
+
+  <header id="masthead" class="site-header" role="banner">
+  <div id="header-image" style="margin-left:6%;margin-top:3.5%;">
+  		<?php 
               $post_quote = (query_posts('cat='.get_cat_ID('sözlerim')));
           ?> 
-            <div class="pull-right" style="margin-top:90px;padding-right:155px;color:white;font:bold;font-size:17px">
+            <div class="pull-right" style="margin-top:90px;padding-right:10%;color:white;font:bold;font-size:17px">
                <?php
                 foreach ($post_quote as $value_quote) {
                     $quotes[] = $value_quote->post_content;
@@ -129,11 +128,10 @@
                         unset($post_quote);
                         wp_reset_query();
                 ?>
-            </div>
-          </div> 	</header><!-- #masthead -->
-  		</div>
- 
+				</div>
+				</div>
+           
+    </header><!-- #masthead -->
   
-  	<div id="main" class="wrapper">
+  <div id="page" class="hfeed site">
   <div class="row-fluid">
-  <div class="container-fluid">

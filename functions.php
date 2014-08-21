@@ -858,7 +858,7 @@ add_filter('user_contactmethods','boilerstrap_remove_contactmethods',10,1);
      $url = $url . '/wp-content/themes/boilerstrap/css/admin-styles.css';
      echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
  }
- add_action('admin_head', 'boilerstrap_customAdmin');
- register_nav_menus( array(  
-  'primary' => __( 'Primary Navigation', 'boilerstrap' ), 
+register_nav_menus( array(  
+  'primary' => __( 'Primary Navigation', 'boilerstrap' ),  
+  'secondary' => __('Secondary Navigation', 'boilerstrap')  
 ) );
