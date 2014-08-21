@@ -76,7 +76,7 @@ get_sidebar( 'mobile' ); ?>
                 <?php endif; ?>
                 
               </div>              
-              <div class="row">
+              <div class="row"style="margin-top:10px;">
               <div class="panel panel-info">
               <div class="panel-heading">
                 <h3 class="panel-title">

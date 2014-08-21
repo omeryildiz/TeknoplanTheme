@@ -859,3 +859,6 @@ add_filter('user_contactmethods','boilerstrap_remove_contactmethods',10,1);
      echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
  }
  add_action('admin_head', 'boilerstrap_customAdmin');
+ register_nav_menus( array(  
+  'primary' => __( 'Primary Navigation', 'boilerstrap' ), 
+) );

@@ -19,19 +19,13 @@
 
 <div class="container" style="padding-top:20px;padding-bottom:20px;">
 <p></p>
-        <div class="nav-collapse collapse">
-		<?php 
-  	  	    wp_nav_menu( array(
-  	  	        'menu'       => 'top_menu',
-  	  	        'depth'      => 3,
-  	  	        'container'  => false,
-  	  	        'menu_class' => 'inverse',
-  	  	        //Process nav menu using our custom nav walker
-  	  	        'walker' => new twitter_bootstrap_nav_walker())
-  	  	    );
-  	  	?>
+    <div class="row">
+          <div id="menu_footer_id">
+            <?php wp_nav_menu(array('theme_location'=>'primary-menu','menu_class'=>'footer_menu_class','menu_id'=>'menu_footer_id','items_wrap'=>'<ul id="%1$s">%3$s</ul>')); ?>
+          </div>
           </div>
         </div>
+           
 </div>
 <div style="background-color:#d6cfb8">
 
