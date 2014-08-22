@@ -112,7 +112,7 @@
     </div>
   </div>
 
-  <header id="masthead" class="site-header" role="banner">
+  <header id="masthead"  class="site-header" role="banner">
   <div id="header-image" style="margin-left:6%;margin-top:3.5%;">
   		<?php 
               $post_quote = (query_posts('cat='.get_cat_ID('sözlerim')));
