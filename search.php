@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-	<section id="primary" class="site-content span8">
-		<div id="content" role="main">
+	<section id="primary"  class="hfeed site container-fluid"style="margin-left:2%;">
+		<div id="content" class="container span12" style="margin-top:-3%;" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -22,7 +22,14 @@ get_header(); ?>
 
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
+				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+
+
+			<div class="entry">
+				
+			<?php the_content(); ?>
+
+			</div>
 			<?php endwhile; ?>
 
 			<?php boilerstrap_content_nav( 'nav-below' ); ?>
@@ -35,7 +42,7 @@ get_header(); ?>
 				</header>
 
 				<div class="entry-content">
-					<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'boilerstrap' ); ?></p>
+					<p><?php _e( 'Üzgünüz,aradığınız karakter ile ilgili bilgi bulunamadı.', 'boilerstrap' ); ?></p>
 					<?php get_search_form(); ?>
 				</div><!-- .entry-content -->
 			</article><!-- #post-0 -->

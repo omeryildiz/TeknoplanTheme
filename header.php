@@ -73,24 +73,25 @@
 
 <body <?php body_class(); ?>>
 
-  <div id="site-navigation" class="navbar navbar-fixed-top" role="navigation">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <i class="icon-chevron-down"></i>
-        </button>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-        <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'boilerstrap' ); ?>"><?php _e( 'Skip to content', 'boilerstrap' ); ?></a>
-        <div class="nav-collapse collapse">
-  	  	<?php 
-  	  	    wp_nav_menu( array(
-  	  	        'menu'       => 'top_menu',
-  	  	        'depth'      => 3,
-  	  	        'container'  => false,
-  	  	        'menu_class' => 'nav',
-  	  	        //Process nav menu using our custom nav walker
-  	  	        'walker' => new twitter_bootstrap_nav_walker())
-  	  	    );
+	<div id="site-navigation" class="navbar navbar-fixed-top" role="navigation">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<a style="margin-left:5%;" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'boilerstrap' ); ?>"><?php _e( 'Skip to content', 'boilerstrap' ); ?></a>
+					<div class="nav-collapse collapse" >
+		<?php 
+		wp_nav_menu( array(
+  	  	'menu'       => 'top_menu',
+  	  	'depth'      => 3,
+  	  	'container'  => false,
+  	  	'menu_class' => 'nav',
+  	  	'walker' => new twitter_bootstrap_nav_walker())
+  	  	);
   	  	?>
   			<p style="margin-top:9px;margin-left:20px;margin-right:20px" class="navbar-search pull-right">
             <?php // get_sidebar('teknoplan'); 
@@ -100,39 +101,34 @@
             <?php else: ?>
             <a tabindex="-1" href=<?php echo get_site_url() ?> ><img height="22" width="36" src="http://teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/turk.png"></a></li>
             <?php endif; ?>            
-          </p>
+			</p>
 		<form method="get" id="searchform" class="navbar-search pull-right" action="<?php bloginfo('home'); ?>/">
 		<form class="form-search">
-		<input type="text" name="s" id="s" class="search-query" placeholder="Search" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" x-webkit-speech tabindex="1">
+		<input type="text" name="s" id="s" class="search-query" placeholder="Arama..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" x-webkit-speech tabindex="1">
   		</form>
   		</form>	
   
         </div><!--/.nav-collapse -->
-      </div>
-    </div>
-  </div>
+      </div><!--container-fluid-->
+    </div><!--navbar-inner-->
+  </div><!-- navbar-fixed-top -->
 
-  <header id=""  class="" style="margin-left:2%;" role="banner">
-  <div id="header-image" style="margin-top:4%;">
-   		<?php 
-              $post_quote = (query_posts('cat='.get_cat_ID('sözlerim')));
-          ?> 
-            <div class="pull-right" style="margin-top:90px;margin-right:3%;color:white;font:bold;font-size:17px">
-               <?php
-                foreach ($post_quote as $value_quote) {
-                    $quotes[] = $value_quote->post_content;
-                      }
+<header style="margin-left:2%;" role="banner">
+	<div id="header-image"  class="col-lg-12 visible-lg" style="margin-top:4%;">
+   	<?php $post_quote = (query_posts('cat='.get_cat_ID('sözlerim')));?> 
+    <div class="pull-right" style="margin-top:90px;margin-right:4%;color:white;font:bold;font-size:17px">
+        <?php
+            foreach ($post_quote as $value_quote) {
+                $quotes[] = $value_quote->post_content;}
                       $max = count($quotes);
                       $rand_numb = rand(0,$max-1);                                    
                         echo "<p>".$quotes[$rand_numb]."</p>";
                         unset($post_quote);
                         wp_reset_query();
-                ?>
-				</div>
-				</div>
-		
-           
-    </header><!-- #masthead -->
+        ?>
+	</div><!--header-image-->
+	</div><!--pull-right-->
+</header><!-- #masthead -->
   
-  <div id="page" class="hfeed site">
-  <div class="row-fluid">
+<div id="page" class="hfeed site">
+	<div class="row-fluid">
