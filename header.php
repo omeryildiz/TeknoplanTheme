@@ -112,12 +112,12 @@
     </div>
   </div>
 
-  <header id="masthead"  class="site-header" role="banner">
-  <div id="header-image" style="margin-left:6%;margin-top:3.5%;">
-  		<?php 
+  <header id=""  class="" style="margin-left:2%;" role="banner">
+  <div id="header-image" style="margin-top:4%;">
+   		<?php 
               $post_quote = (query_posts('cat='.get_cat_ID('sözlerim')));
           ?> 
-            <div class="pull-right" style="margin-top:90px;padding-right:10%;color:white;font:bold;font-size:17px">
+            <div class="pull-right" style="margin-top:90px;margin-right:3%;color:white;font:bold;font-size:17px">
                <?php
                 foreach ($post_quote as $value_quote) {
                     $quotes[] = $value_quote->post_content;
@@ -130,6 +130,7 @@
                 ?>
 				</div>
 				</div>
+		
            
     </header><!-- #masthead -->
   

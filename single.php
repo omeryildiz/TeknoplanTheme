@@ -8,27 +8,33 @@
  */
 
 get_header(); ?>
+<div id="primary"  class="hfeed site container-fluid" style="margin-left:2%;">
+
+		<div id="content" class="site-container span12" style="margin-top:-6%;" role="main">
+		<?php if(have_posts()) : ?><?php while(have_posts()) : the_post(); ?>
+		
+		<div class="post" style="min-height:20px">
+		<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
 
-	<div id="primary" class="hfeed site container">
-		<div id="content"class="site-container span11"style="margin-top:-5%;" role="main">
+			<div class="entry">
+				
+			<?php the_content(); ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			</div>
 
-				<?php get_template_part( 'content', get_post_format() ); ?>
+		</div>
+		
+<?php endwhile; ?>
 
-				<nav class="nav-single">
-					<h3 class="assistive-text"><?php _e( 'Post navigation', 'boilerstrap' ); ?></h3>
-					<span class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'boilerstrap' ) . '</span> %title' ); ?></span>
-					<span class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'boilerstrap' ) . '</span>' ); ?></span>
-				</nav><!-- .nav-single -->
+	<div class="navigation">
+		<?php posts_nav_link(); ?>
+	</div>
 
-				<?php comments_template( '', true ); ?>
-
-			<?php endwhile; // end of the loop. ?>
-
+<?php endif; ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
+
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

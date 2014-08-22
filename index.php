@@ -18,10 +18,12 @@ get_header();
 get_sidebar( 'mobile' ); ?>
 
 
-	<div id="primary" class="site-content span12">
-		<div id="content" style="margin-top:px;"  role="main">
-		<div id="this-carousel-id" class="carousel slide span8">
-        <div class="carousel-inner"style="size:20px 20px;">
+	<div id="primary" class="span12">
+		<div id="content" class="container-fluid" role="main">
+		<div class="span8">
+		<div class="row" style="margin-left:1%; margin-top:1%" >
+		<div id="this-carousel-id"  class="carousel slide" >
+        <div class="carousel-inner">
           <?php $posts = (query_posts( 'cat='.get_cat_ID('slider') ));
            //var_dump($posts);
           static $flag_active = 1;
@@ -48,15 +50,15 @@ get_sidebar( 'mobile' ); ?>
           <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
           <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
         </div><!-- .carousel -->
+		</div>
+		</div>
 		<?php 
               $posts = (query_posts( 'cat='.get_cat_ID('haber') ));
           ?>
 		  
-      		  
-			</div><!-- #content -->
-	<div class="span4 offset1" style="margin-left:10px;">
-	<div class="row" style="margin-left:0px;">
-		  <div style="padding-bottom:10px,padding-top:px">
+      		  <div class="span4" >
+	<div class="row">
+		  <div style="padding-bottom:2%;padding-left:3%;">
                 <?php if(get_bloginfo('language') == "en-US"): ?>
 				<div ><img src="http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label_eng.png" usemap="#Map" style="background-image: url('http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png');background-size:90% 90%;" border="0">
                       <map name="Map" id="Map">
@@ -65,7 +67,7 @@ get_sidebar( 'mobile' ); ?>
                       </map>
                       </div>       
                  <?php else: ?>
-                    <div style="margin-top:-6%"><img src="http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png" usemap="#Map" style="margin-top:27px;background-image: url('http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png');background-size:90% 90%;" border="0">
+                    <div style="margin-top:-5%"><img src="http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png" usemap="#Map" style="margin-top:27px;background-image: url('http://www.teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/urun_satislari_label.png');background-size:90% 90%;" border="0">
                       <map name="Map" id="Map">
                         <area shape="rect" coords="140,5,263,88" href="http://automation.teknoplan.com.tr/index.php/urunler/" />
                         <area shape="rect" coords="268,4,430,89" href="http://teknoplan.com.tr/index.php/urunler-otomasyon/" />
@@ -74,8 +76,7 @@ get_sidebar( 'mobile' ); ?>
 					     <?php endif; ?>
            </div> <!--row span4-->                             
                </div>
-         
-		<div class="panel panel-info">
+        <div class="panel panel-info" style="margin-left:-4.5%; ">
               <div class="panel-heading">
                 <h3 class="panel-title">
                   <?php
@@ -96,6 +97,8 @@ get_sidebar( 'mobile' ); ?>
                 </div>
             </div>
           </div></div>
+			</div><!-- #content -->
+	
         
 	</div><!-- #primary -->
 			 <div class="row"> 
