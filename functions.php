@@ -75,8 +75,83 @@ function boilerstrap_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
 }
+
 add_action( 'after_setup_theme', 'boilerstrap_setup' );
 
+/**
+Breadcrumb function was coded to track locations by Ömer Yıldız
+
+**/
+function the_breadcrumb() {
+    global $post;
+    echo '<ol style="background-color:white;" class="breadcrumb">';
+    
+    if (!is_home()) {
+        if(get_site_url()!="http://teknoplan.com.tr")
+            echo  "<li><a href='http://teknoplan.com.tr'>Teknoplan</a></li>";
+        echo '<li><a href="';
+        echo get_option('home');
+        echo '">';
+        if(get_bloginfo('language') == "tr-TR")
+        {
+            if(get_site_url() == "http://teknoplan.com.tr")
+                echo 'Teknoplan';
+            if(get_site_url() == "http://machine.teknoplan.com.tr")
+                echo 'Makine';
+            if(get_site_url() == "http://automation.teknoplan.com.tr")
+                echo 'Otomasyon';
+            if(get_site_url() == "http://it.teknoplan.com.tr")
+                echo 'Bilişim';
+        }
+            
+        else
+        {
+            if(get_site_url() == "http://teknoplan.com.tr")
+                echo 'Teknoplan';
+            if(get_site_url() == "http://machine.teknoplan.com.tr")
+                echo 'Machine';
+            if(get_site_url() == "http://automation.teknoplan.com.tr")
+                echo 'Automation';
+            if(get_site_url() == "http://it.teknoplan.com.tr")
+                echo 'IT';
+        }
+            
+        echo '</a>';
+        echo '</li>';
+        if (is_category() || is_single()) {
+            echo '<li>';
+            the_category('</li><li> ');
+            if (is_single()) {
+                echo '</li><li>';
+                the_title();
+                echo '</li>';
+            }
+        } elseif (is_page()) {         
+            if($post->post_parent){                
+                $anc = get_post_ancestors( $post->ID );
+                foreach ( $anc as $ancestor ) {
+                    $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ';
+                }
+                echo $output;
+                echo '<li><strong>';
+                echo the_title();
+                echo '</strong></li>';
+            } else {               
+                echo '<li><strong>';
+                echo the_title();
+                echo '</strong></li>';
+            }
+        }
+    }
+ 	elseif (is_tag()) {single_tag_title();}
+    elseif (is_day()) {echo"<li> "; the_time('F jS, Y'); echo'</li>';}
+    elseif (is_month()) {echo"<li>"; the_time('F, Y'); echo'</li>';}
+    elseif (is_year()) {echo"<li> "; the_time('Y'); echo'</li>';}
+    elseif (is_author()) {echo"<li>"; echo'</li>';}
+    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+    elseif (is_search()) {echo"<li>Search Results"; echo'</li>';}
+    echo '</ol>';
+}
 /**
  * Adds support for a custom header image.
  */
