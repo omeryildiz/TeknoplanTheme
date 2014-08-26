@@ -101,8 +101,12 @@ get_sidebar( 'mobile' ); ?>
 	
         
 	</div><!-- #primary -->
-			 <div class="row"> 
-		  <div class="span4 text-center">
+			  <div class="row">
+      <?php if (get_site_url() == "http://teknoplan.com.tr"): ?>
+          <div class="span12 visible-lg" >
+            
+              <?php if (get_bloginfo('language') == "tr-TR"): ?>
+                    <div class="span4 text-center">
                     <a href="http://machine.teknoplan.com.tr/">
                     <img class="img-circle" style="width: 140px; height: 140px;" src="http://teknoplan.com.tr/wp-content/uploads/2013/10/makine.jpeg">
                     <h2>Makine</h2>
@@ -122,7 +126,36 @@ get_sidebar( 'mobile' ); ?>
                     <h2>Bilişim</h2>
                     </a>
                   </div>
+              <?php else: ?>
+                <div class="span4 text-center">
+                <a href="http://machine.teknoplan.com.tr/?lang=en">
+                <img class="img-circle" style="width: 140px; height: 140px;" src="http://teknoplan.com.tr/wp-content/uploads/2013/10/makine.jpeg">
+                <h2>Machine</h2>
+                <p></p>
+                </a>
+              </div>
+              <div class="span4 text-center">
+                <a href="http://automation.teknoplan.com.tr/?lang=en">
+                <img class="img-circle" style="width: 140px; height: 140px;" src="http://teknoplan.com.tr/wp-content/uploads/2013/10/automation1.jpg">
+                <h2>Automation</h2>
+                <p></p>
+               </a>
+              </div>
+              <div class="span4 text-center">
+                <a href="http://it.teknoplan.com.tr/?lang=en">
+                <img class="img-circle" style="width: 140px; height: 140px;" src="http://teknoplan.com.tr/wp-content/uploads/2013/10/software.jpeg">
+                <h2>IT</h2>
+                </a>
+              </div>
+            <?php endif; ?>
+           <?php 
+  
+            ?>
           </div>
+        
+        <?php endif; ?>
+
+        </div>
 
 <?php get_sidebar('teknoplan'); ?>
 <?php get_footer(); ?>
