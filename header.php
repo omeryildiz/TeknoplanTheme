@@ -73,7 +73,7 @@
 
 <body <?php body_class(); ?>>
 
-	<div id="site-navigation" class="navbar navbar-fixed-top" role="navigation">
+	<div id="site-navigation" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -129,6 +129,6 @@
 	</div><!--header-image-->
 	</div><!--pull-right-->
 </header><!-- #masthead -->
-  
+  <?php the_breadcrumb() ?>
 <div id="page" class="hfeed site">
 	<div class="row-fluid">
