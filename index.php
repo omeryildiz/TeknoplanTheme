@@ -124,5 +124,5 @@ get_sidebar( 'mobile' ); ?>
                   </div>
           </div>
 
-<?php get_sidebar(); ?>
+<?php get_sidebar('teknoplan'); ?>
 <?php get_footer(); ?>
