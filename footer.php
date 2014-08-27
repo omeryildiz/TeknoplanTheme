@@ -15,11 +15,11 @@
 <div style="margin-top:5%;">
 </div><!-- #page -->
 
-			<?php wp_footer(); ?>
+		
 			<div id="footer_menu" class="col-lg-12 visible-lg" style="background-color:#1d1c1c" >
-			<div class="container" style="padding-top:20px;padding-bottom:20px;">
+			<div class="container-fluid" style="padding-top:20px;padding-bottom:20px;">
 			<div id="menu_footer_id">
-            <?php wp_nav_menu(array('theme_location'=>'primary-menu','menu_class'=>'footer_menu_class','menu_id'=>'menu_footer_id','items_wrap'=>'<ul id="%1$s">%3$s</ul>')); ?>
+            <?php wp_nav_menu(array('theme_location'=>'footer_menu','menu_class'=>'footer_menu_class','menu_id'=>'menu_footer_id','items_wrap'=>'<ul id="%1$s">%3$s</ul>')); ?>
 			</div>
 			</div>
 </div>
@@ -50,5 +50,6 @@
 			</div>
 			</div>
 			</div>
+				<?php wp_footer(); ?>
 </body>
 </html>

@@ -859,20 +859,9 @@ add_filter('user_contactmethods','boilerstrap_remove_contactmethods',10,1);
  
 register_nav_menus( array(  
   'primary' => __( 'Primary Navigation', 'boilerstrap' ),  
-  'secondary' => __('Secondary Navigation', 'boilerstrap')  
+  'footer_menu' => __('Secondary Navigation', 'boilerstrap')  
 ) );
-if ( function_exists('register_sidebar') ) 
-{
-	register_sidebar(array(
-	'name' => 'Menü Sidebar',
-	'id' => 'teknoplan-sidebar',
-	'description' => 'Teknoplan için yapılmış sidebar',
-	'before_widget' => '<div class="col-lg-4">',
-	'after_widget' => '</div>',
-	'before_title' => '<h2>',
-	'after_title' => '</h2>',
-	));
-}
+
 
 
 function the_breadcrumb() {
@@ -941,4 +930,16 @@ function the_breadcrumb() {
     elseif (is_author()) {echo"<li>"; echo'</li>';}
     elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
     echo '</ol>';
+}
+if ( function_exists('register_sidebar') ) 
+{
+	register_sidebar(array(
+	'name' => 'Menü Sidebar',
+	'id' => 'teknoplan-sidebar',
+	'description' => 'Teknoplan için yapılmış sidebar',
+	'before_widget' => '<div class="col-lg-4">',
+	'after_widget' => '</div>',
+	'before_title' => '<h2>',
+	'after_title' => '</h2>',
+	));
 }
