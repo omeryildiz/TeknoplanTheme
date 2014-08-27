@@ -13,37 +13,56 @@
 
 get_header(); ?>
 
-	<section id="primary" class="site-content span8">
-		<div id="content" role="main">
+	<section id="primary"  class="hfeed site container-fluid"style="margin-left:2%;">>
+		<div id="content" class="site-container span12" style="margin-top:-5%;" role="main">
+<?php get_header(); ?>
 
-		<?php if ( have_posts() ) : ?>
-			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Category Archives: %s', 'boilerstrap' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
+	<div id="blog">
+	
+		<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
+			<?php /* If this is a category archive */ if (is_category()) { ?>
+				<h2><?php //single_cat_title(); ?></h2>
+			<?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
+				<h2><?php single_tag_title(); ?></h2>
+			<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
+				<h2><?php the_time('F jS, Y'); ?>:</h2>
+			<?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
+				<h2> <?php the_time('F, Y'); ?>:</h2>
+			<?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
+				<h2><?php the_time('Y'); ?>:</h2>
+			<?php /* If this is an author archive */ } elseif (is_author()) { ?>
+				<h2></h2>
+			<?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
+				<h2></h2>
+		<?php } ?>
+	
+		<?php if(have_posts()) : ?><?php while(have_posts()) : the_post(); ?>
+		
+		<div class="post">
+		<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
-			<?php if ( category_description() ) : // Show an optional category description ?>
-				<div class="archive-meta"><?php echo category_description(); ?></div>
-			<?php endif; ?>
-			</header><!-- .archive-header -->
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+			<div class="entry">
+			<?php the_content(); ?>
 
-				/* Include the post format-specific template for the content. If you want to
-				 * this in a child theme then include a file called called content-___.php
-				 * (where ___ is the post format) and that will be used instead.
-				 */
-				get_template_part( 'content', get_post_format() );
+				<p class="postmetadata">
+				  <?php// the_category(', ') ?> <?php // the_author(); ?> <?php //_e('tarafından'); ?><?php //_e('oluşturuldu'); ?><br />
+				<?php //comments_popup_link('Yorum yok &#187;', '1 Yorum &#187;', '% Yorumlar &#187;'); ?> <?php //edit_post_link('Düzenle', ' &#124; ', ''); ?>
+				</p>
 
-			endwhile;
+			</div>
 
-			boilerstrap_content_nav( 'nav-below' );
-			?>
+		</div>
+		
+<?php endwhile; ?>
 
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
+	<div class="navigation">
+		<?php posts_nav_link(); ?>
+	</div>
 
+<?php endif; ?>
+
+</div>
 		</div><!-- #content -->
 	</section><!-- #primary -->
 

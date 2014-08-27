@@ -82,79 +82,7 @@ add_action( 'after_setup_theme', 'boilerstrap_setup' );
 Breadcrumb function was coded to track locations by Ömer Yıldız
 
 **/
-function the_breadcrumb() {
-    global $post;
-    echo '<ol style="background-color:white;" class="breadcrumb">';
-    
-    if (!is_home()) {
-        if(get_site_url()!="http://teknoplan.com.tr")
-            echo  "<li><a href='http://teknoplan.com.tr'>Teknoplan</a></li>";
-        echo '<li><a href="';
-        echo get_option('home');
-        echo '">';
-        if(get_bloginfo('language') == "tr-TR")
-        {
-            if(get_site_url() == "http://teknoplan.com.tr")
-                echo 'Teknoplan';
-            if(get_site_url() == "http://machine.teknoplan.com.tr")
-                echo 'Makine';
-            if(get_site_url() == "http://automation.teknoplan.com.tr")
-                echo 'Otomasyon';
-            if(get_site_url() == "http://it.teknoplan.com.tr")
-                echo 'Bilişim';
-        }
-            
-        else
-        {
-            if(get_site_url() == "http://teknoplan.com.tr")
-                echo 'Teknoplan';
-            if(get_site_url() == "http://machine.teknoplan.com.tr")
-                echo 'Machine';
-            if(get_site_url() == "http://automation.teknoplan.com.tr")
-                echo 'Automation';
-            if(get_site_url() == "http://it.teknoplan.com.tr")
-                echo 'IT';
-        }
-            
-        echo '</a>';
-        echo '</li>';
-        if (is_category() || is_single()) {
-            echo '<li>';
-            the_category('</li><li> ');
-            if (is_single()) {
-                echo '</li><li>';
-                the_title();
-                echo '</li>';
-            }
-        } elseif (is_page()) {         
-            if($post->post_parent){                
-                $anc = get_post_ancestors( $post->ID );
-                foreach ( $anc as $ancestor ) {
-                    $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ';
-                }
-                echo $output;
-                echo '<li><strong>';
-                echo the_title();
-                echo '</strong></li>';
-            } else {               
-                echo '<li><strong>';
-                echo the_title();
-                echo '</strong></li>';
-            }
-        }
-    }
- 	elseif (is_tag()) {single_tag_title();}
-    elseif (is_day()) {echo"<li> "; the_time('F jS, Y'); echo'</li>';}
-    elseif (is_month()) {echo"<li>"; the_time('F, Y'); echo'</li>';}
-    elseif (is_year()) {echo"<li> "; the_time('Y'); echo'</li>';}
-    elseif (is_author()) {echo"<li>"; echo'</li>';}
-    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
-    elseif (is_search()) {echo"<li>Search Results"; echo'</li>';}
-    echo '</ol>';
-}
-/**
- * Adds support for a custom header image.
- */
+
 require( get_template_directory() . '/inc/custom-header.php' );
 
 /**
@@ -928,12 +856,89 @@ add_filter('user_contactmethods','boilerstrap_remove_contactmethods',10,1);
 /**
  * Custom Admin CSS
  */
- function boilerstrap_customAdmin() {
-     $url = get_settings('siteurl');
-     $url = $url . '/wp-content/themes/boilerstrap/css/admin-styles.css';
-     echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
- }
+ 
 register_nav_menus( array(  
   'primary' => __( 'Primary Navigation', 'boilerstrap' ),  
   'secondary' => __('Secondary Navigation', 'boilerstrap')  
 ) );
+if ( function_exists('register_sidebar') ) 
+{
+	register_sidebar(array(
+	'name' => 'Menü Sidebar',
+	'id' => 'teknoplan-sidebar',
+	'description' => 'Teknoplan için yapılmış sidebar',
+	'before_widget' => '<div class="col-lg-4">',
+	'after_widget' => '</div>',
+	'before_title' => '<h2>',
+	'after_title' => '</h2>',
+	));
+}
+
+
+function the_breadcrumb() {
+    global $post;
+    echo '<ol style="background-color:white;" class="breadcrumb">';
+    
+    if (!is_home()) {
+        if(get_site_url()!="http://localhost/wordpress/")
+            echo  "<li><a href='http://teknoplan.com.tr'>Teknoplan</a></li>";
+        
+        if(get_bloginfo('language') == "tr-TR")
+        {
+            if(get_site_url() == "http://teknoplan.com.tr")
+                echo 'Teknoplan';
+            if(get_site_url() == "http://machine.teknoplan.com.tr")
+                echo 'Makine';
+            if(get_site_url() == "http://automation.teknoplan.com.tr")
+                echo 'Otomasyon';
+            if(get_site_url() == "http://it.teknoplan.com.tr")
+                echo 'Bilişim';
+        }
+            
+        else
+        {
+            if(get_site_url() == "http://teknoplan.com.tr")
+                echo 'Teknoplan';
+            if(get_site_url() == "http://machine.teknoplan.com.tr")
+                echo 'Machine';
+            if(get_site_url() == "http://automation.teknoplan.com.tr")
+                echo 'Automation';
+            if(get_site_url() == "http://it.teknoplan.com.tr")
+                echo 'IT';
+        }
+            
+        echo '</a>';
+        echo '</li>';
+        if (is_category() || is_single()) {
+            echo '<li>';
+            the_category('</li><li> ');
+            if (is_single()) {
+                echo '</li><li>';
+                the_title();
+                echo '</li>';
+            }
+        } elseif (is_page()) {         
+            if($post->post_parent){                
+                $anc = get_post_ancestors( $post->ID );
+                foreach ( $anc as $ancestor ) {
+                    $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ';
+                }
+                echo $output;
+                echo '<li><strong>';
+                echo the_title();
+                echo '</strong></li>';
+            } else {               
+                echo '<li><strong>';
+                echo the_title();
+                echo '</strong></li>';
+            }
+        }
+    }
+    elseif (is_tag()) {single_tag_title();}
+    elseif (is_day()) {echo"<li> "; the_time('F jS, Y'); echo'</li>';}
+    elseif (is_month()) {echo"<li>"; the_time('F, Y'); echo'</li>';}
+    elseif (is_year()) {echo"<li> "; the_time('Y'); echo'</li>';}
+    elseif (is_author()) {echo"<li>"; echo'</li>';}
+    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+    echo '</ol>';
+}

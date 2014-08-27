@@ -12,7 +12,7 @@
 ?>
 </div><!-- #main .wrapper -->
 </div>
-<div style="margin:5%;">
+<div style="margin-top:5%;">
 </div><!-- #page -->
 
 			<?php wp_footer(); ?>

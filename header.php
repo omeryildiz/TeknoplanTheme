@@ -73,7 +73,7 @@
 
 <body <?php body_class(); ?>>
 
-	<div id="site-navigation" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div id="site-navigation" class="navbar navbar-fixed-top" role="navigation">
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -94,12 +94,10 @@
   	  	);
   	  	?>
   			<p style="margin-top:9px;margin-left:20px;margin-right:20px" class="navbar-search pull-right">
-            <?php // get_sidebar('teknoplan'); 
-            ?>
             <?php if(get_bloginfo('language') == "tr-TR"): ?>
             <a tabindex="-1" href=<?php echo get_site_url()."/?lang=en" ?> ><img height="22" width="36" src="http://teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/eng.png"></a></li>         
             <?php else: ?>
-            <a tabindex="-1" href=<?php echo get_site_url() ?> ><img height="22" width="36" src="http://teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/turk.png"></a></li>
+            <a tabindex="-1" href=<?php echo get_site_url()  ?> ><img height="22" width="36" src="http://teknoplan.com.tr/wp-content/themes/teknoplantheme/assets/img/turk.png"></a></li>
             <?php endif; ?>            
 			</p>
 		<form method="get" id="searchform" class="navbar-search pull-right" action="<?php bloginfo('home'); ?>/">
@@ -129,6 +127,6 @@
 	</div><!--header-image-->
 	</div><!--pull-right-->
 </header><!-- #masthead -->
-  <?php the_breadcrumb() ?>
 <div id="page" class="hfeed site">
+<a><?php the_breadcrumb()?></a>
 	<div class="row-fluid">
